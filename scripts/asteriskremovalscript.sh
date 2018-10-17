@@ -8,5 +8,3 @@ set -e
         find . -type f -name '*.wav' -mtime +60 -delete
 
         find . -type d -empty -delete 
-
-	exit;
