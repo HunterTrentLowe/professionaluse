@@ -1,0 +1,5 @@
+$path = "C:\"
+$size = 2000MB
+$limit = 20
+$largeSizefiles = get-ChildItem -path $path -recurse -ErrorAction "SilentlyContinue" | ? { $_.GetType().Name -eq "FileInfo" } | where-Object {$_.Length -gt $size} | sort-Object -property length -Descending | Select-Object Name, @{Name="SizeInMB";Expression={$_.Length / 1MB}},@{Name="Path";Expression={$_.directory}} -first $limit
+$largeSizefiles |Export-Csv c:\lsfreport.csv

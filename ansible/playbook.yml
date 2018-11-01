@@ -1,0 +1,15 @@
+---
+
+        - name: Wks configuration
+          hosts: 127.0.0.1
+          connection: local
+          become: yes
+          tasks:
+
+          - name: Update repos
+            apt: update_cache=yes
+
+          - name: apt upgrade
+            apt: name={{item}} state=installed
+            with_item:
+                    -
